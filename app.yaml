@@ -1,0 +1,31 @@
+runtime: php
+env: flex
+service: tipadminpanel
+runtime_config:
+  document_root: public
+beta_settings:
+   # for Cloud SQL, set this value to the Cloud SQL connection name,
+   # e.g. "project:region:cloudsql-instance"
+   cloud_sql_instances: tipartists:us-central1:tipdb-instance
+env_variables:
+        APP_ENV: production
+        APP_NAME: 'TipAdmin'
+        APP_KEY: 'base64:0X2Y/Fk7Ts4H8mhM6bpI/lERllQ9VgLy8u27Yz9YawY='
+        APP_DEBUG: 'true'
+        APP_STORAGE: /tmp
+        LOG_CHANNEL: stderr
+        SESSION_DRIVER: cookie
+        VIEW_COMPILED_PATH: /tmp
+        DB_CONNECTION: mysql
+        DB_HOST: localhost
+        DB_PORT: 3306
+        DB_DATABASE: tip
+        DB_USERNAME: root
+        DB_PASSWORD: root123
+        DB_SOCKET: "/cloudsql/tipartists:us-central1:tipdb-instance"
+automatic_scaling:
+        min_idle_instances: automatic
+        max_idle_instances: automatic
+        min_pending_latency: automatic
+        max_pending_latency: automatic
+network: {}
